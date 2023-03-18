@@ -1,0 +1,32 @@
+
+/* Url Label*/
+.l_url_error {
+    color: rgb(255, 255, 255); 
+    background-color: rgb(255, 0, 0);
+    padding: 0px 10px 0px 10px;
+    border-radius: 3px;
+}
+
+/* CPU Label*/
+.l_kpi_cpu_hight {
+    color: rgb(255, 0, 0);
+}
+.l_kpi_cpu_normal {
+    color: rgb(0, 170, 127);
+}
+
+/* theaders progress bars */
+.tpb_stoped {
+    text-align: left;
+    background-color: rgb(255, 128, 128);
+}
+
+.tpb_pause {
+    text-align: left;
+    background-color: rgb(255, 170, 127);
+}
+
+.tpb_running {
+    text-align: left;
+    background-color: rgb(173, 235, 173);
+}

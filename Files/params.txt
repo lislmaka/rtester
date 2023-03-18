@@ -1,0 +1,6 @@
+{
+    "params1": "val1",
+    "params2": "val2",
+    "params3": "val3",
+    "params4": "val4"
+}

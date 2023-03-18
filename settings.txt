@@ -1,0 +1,18 @@
+{
+    "program_name": "Requests Tester",
+    "program_version": "1.0.",
+    "author_name": "@LS",
+    "authon_email": "test@mail.ru",
+    "authon_phone": "+7 (499) 456-45-45",
+    "authon_whatsapp": "+7 (499) 456-45-45",
+    "authon_github_url": "https://github.com",
+    "urls": [
+        "https://алтайхижина.рф/",
+        "https://mail.ru",
+        "https://yandex.ru",
+        "https://google.com"
+    ],
+    "request_headers": "Files/headers.txt",
+    "request_params": "Files/params.txt",  
+    "request_cookies": "Files/cookies.txt"      
+}

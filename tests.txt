@@ -1,0 +1,20 @@
+[
+    {
+        "cpu_limit": 60,
+        "theaders": 1,
+        "requests": 100,
+        "queue_size": 20        
+    },     
+    {
+        "cpu_limit": 60,
+        "theaders": 10,
+        "requests": 10,
+        "queue_size": 20        
+    },    
+    {
+        "cpu_limit": 60,
+        "theaders": 20,
+        "requests": 5,
+        "queue_size": 20        
+    }              
+]
