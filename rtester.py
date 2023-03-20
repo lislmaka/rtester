@@ -26,7 +26,7 @@ import modules.gui_toolbar as gui_toolbar
 
 
 # ------------------------------------------------------------------------------- #
-# Клас сновного окна программы
+# Класс основного окна программы
 # ------------------------------------------------------------------------------- #
 class main_gui(QtWidgets.QMainWindow):
     # --------------------------------------------------------------------------- #
@@ -152,7 +152,7 @@ class main_gui(QtWidgets.QMainWindow):
                          "настройками тестирования").format("tests.txt"))
             self.add_logs_system(
                 message=("Для всех циклов будут "
-                         "использоваться настроки поумолчанию"))
+                         "использоваться настройки по умолчанию"))
             return False
 
     # --------------------------------------------------------------------------- #
@@ -388,7 +388,7 @@ class main_gui(QtWidgets.QMainWindow):
         self.tw_table_stat.resizeColumnsToContents()
 
     # --------------------------------------------------------------------------- #
-    # Показывыет главное окно программы
+    # Показывает главное окно программы
     # Отображение по середине экрана
     # --------------------------------------------------------------------------- #
     def show_window(self):
@@ -536,8 +536,9 @@ class main_gui(QtWidgets.QMainWindow):
             self.gui_initialization_log_table()
 
     # --------------------------------------------------------------------------- #
-    # Сохрание лога запросов в файл
-    # Ненравиться мне данный способ. Почму нельзя сразу сохранить свю модел без перебора ?
+    # Сохранение лога запросов в файл
+    # Не нравится мне данный способ
+    # Почему нельзя сразу сохранить свю модель без перебора ?
     # TODO Почитать как сохранять модель в файл
     # --------------------------------------------------------------------------- #
     def gui_event_save_file_log_requests_data(self):
@@ -606,7 +607,7 @@ class main_gui(QtWidgets.QMainWindow):
     def gui_event_close_app(self):
         """
         """
-        # FIXME При использвании QtWidgets.qApp.quit() не срабатывает self.closeEvent()
+        # FIXME При использовании QtWidgets.qApp.quit() не срабатывает self.closeEvent()
         # QtWidgets.qApp.quit()
         self.close()
 
@@ -843,7 +844,7 @@ class main_gui(QtWidgets.QMainWindow):
             QtGui.QStandardItem(str(params["cpu_theader"])),
             QtGui.QStandardItem(str(params["download_size"])),
             QtGui.QStandardItem(str(params["status_code"])),
-            #info_msg,  # QtGui.QStandardItem(str(message_type)),
+            # info_msg,  # QtGui.QStandardItem(str(message_type)),
             QtGui.QStandardItem(str(params["url"])),
             QtGui.QStandardItem(str(params["request_method"])),
             QtGui.QStandardItem(str(params["request_timeout"])),
@@ -868,7 +869,7 @@ class main_gui(QtWidgets.QMainWindow):
 
     # --------------------------------------------------------------------------- #
     # Как же муторно создавать gui в ручную... :(
-    # Создаем gui для динамического формирования theaders progres bars
+    # Создаем gui для динамического формирования theaders progress bars
     # --------------------------------------------------------------------------- #
     def gui_initialization_theaders_progress_bars_canvas(self):
         """
@@ -897,7 +898,7 @@ class main_gui(QtWidgets.QMainWindow):
         if (int(self.l_kpi_requests_connection_error.text()) >=
                 self.sb_requests_max_errors.value()):
             self.add_logs_system(
-                message="Превышено максимальное кол-во ошибочных завпросов")
+                message="Превышено максимальное кол-во ошибочных запросов")
 
             if self.show_confirm_if_many_request_errors:
                 self.confirm_if_many_requests_errors()
@@ -936,7 +937,7 @@ class main_gui(QtWidgets.QMainWindow):
 
     # --------------------------------------------------------------------------- #
     # Проверяем url сайта
-    # 1. Введен ли url сайта (не пустое значени)
+    # 1. Введен ли url сайта (не пустое значение)
     # 2. Проверяем http status code (200, 301, 302) - иначе - ошибка
     # --------------------------------------------------------------------------- #
 
@@ -952,7 +953,7 @@ class main_gui(QtWidgets.QMainWindow):
         popup = gui_popup.window_popup(
             popup_title="Проверка настроек",
             popup_type="info",
-            popup_text="Проверяю настроки программы. Ожидайте...",
+            popup_text="Проверяю настройки программы. Ожидайте...",
             parent=self)
         popup.show()
         QtWidgets.qApp.processEvents()
@@ -1075,7 +1076,7 @@ class main_gui(QtWidgets.QMainWindow):
     # TODO Найти как правильно удалить widget с формы
     #
     # При генерации сигнала on_theader_iteration поток в обратную сторону получает значение
-    # текущего CPU. Данный метод вроде как быстре чем пробегать по массиву потоков и устанавливать
+    # текущего CPU. Данный метод вроде как быстрее чем пробегать по массиву потоков и устанавливать
     # и устанавливать значение текущего CPU
     # TODO Сделать еще раз тесты
     # --------------------------------------------------------------------------- #
@@ -1128,7 +1129,7 @@ class main_gui(QtWidgets.QMainWindow):
         pg.setStyleSheet(QtWidgets.qApp.styleSheet())
 
     # --------------------------------------------------------------------------- #
-    # Собитые потока - on_theader_request
+    # Событие потока - on_theader_request
     # --------------------------------------------------------------------------- #
     def on_theader_request(self, request_type, status_code, download_size):
         """
@@ -1161,7 +1162,7 @@ class main_gui(QtWidgets.QMainWindow):
         self.gui_event_stop_theaders()
 
     # --------------------------------------------------------------------------- #
-    # Принудительно останавлиаем потоки по событию
+    # Принудительно останавливаем потоки по событию
     # --------------------------------------------------------------------------- #
     def gui_event_stop_theaders(self):
         """
@@ -1180,7 +1181,7 @@ class main_gui(QtWidgets.QMainWindow):
 
     # --------------------------------------------------------------------------- #
     # Событие потока - Поток запустился
-    # TODO Переписать на использвание dict theaders_objs вместо переменных
+    # TODO Переписать на использование dict theaders_objs вместо переменных
     # --------------------------------------------------------------------------- #
     def on_theader_started(self, theader_id):
         """
@@ -1190,7 +1191,7 @@ class main_gui(QtWidgets.QMainWindow):
 
     # --------------------------------------------------------------------------- #
     # Событие потока - Поток окончил свою работу
-    # TODO Переписать на использвание dict theaders_objs вместо переменных
+    # TODO Переписать на использование dict theaders_objs вместо переменных
     # --------------------------------------------------------------------------- #
     def on_theader_finished(self, theader_id):
         """
@@ -1502,7 +1503,7 @@ class main_gui(QtWidgets.QMainWindow):
 
     # --------------------------------------------------------------------------- #
     # Если кол-во циклов запуска программы больше 1 то пробуем получить
-    # настроки программы из файла. Если файла нет то все циклы будут
+    # настройки программы из файла. Если файла нет то все циклы будут
     # запускать с настройками по умолчанию
     # --------------------------------------------------------------------------- #
     def check_tests_settings(self, cycle_count):
@@ -1582,7 +1583,7 @@ class main_gui(QtWidgets.QMainWindow):
 
                     except Exception as err:
                         self.add_logs_system(
-                            message="Немогу создать поток... {}".format(err))
+                            message="Не могу создать поток... {}".format(err))
                     finally:
                         theader_id += 1
                         # if self.sb_graf_timeout.value():

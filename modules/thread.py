@@ -3,11 +3,10 @@ import time
 from user_agent import generate_user_agent
 from PyQt5 import QtCore
 
+
 # ------------------------------------------------------------------------------- #
 # Class single_requsts_theader
 # ------------------------------------------------------------------------------- #
-
-
 class single_requsts_theader(QtCore.QThread):
     # --------------------------------------------------------------------------- #
     #  Определяем свои сигналы
@@ -147,10 +146,10 @@ class single_requsts_theader(QtCore.QThread):
                         "request", response.status_code, download_size)
                 else:
                     self.on_request.emit("request", response.status_code, 0)
-                
+
                 self.param["status_code"] = response.status_code
                 self.param["message"] = "HTTP Status Code {}".format(
-                        response.status_code)
+                    response.status_code)
             except Exception as err:
                 self.on_request.emit("connection", 0, 0)
                 self.param["status_code"] = None
@@ -166,7 +165,7 @@ class single_requsts_theader(QtCore.QThread):
                 self.param["cpu_theader"] = self.cpu_current_value
                 self.param["download_size"] = download_size
 
-                self.on_log_message.emit(self.param)                
+                self.on_log_message.emit(self.param)
                 self.on_iteration.emit(
                     self.theader_id,
                     count_of_iteration,
