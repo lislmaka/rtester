@@ -23,6 +23,5 @@ class window_popup(QtWidgets.QDialog):
     #
     # --------------------------------------------------------------------------- #
     def set_popup_text(self, popup_text):
-        """
-        """
+        """ """
         self.l_popup_text.setText(popup_text)

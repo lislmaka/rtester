@@ -26,24 +26,26 @@ class menu_about(QtWidgets.QDialog):
     #
     # --------------------------------------------------------------------------- #
     def show_license_message(self):
-        """
-        """
+        """ """
         if os.path.isfile("license.md"):
             with open("license.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_license_program.setMarkdown(file_text)
         else:
-            self.te_license_program.setMarkdown("No license.md file avaliable in root folder")
+            self.te_license_program.setMarkdown(
+                "No license.md file avaliable in root folder"
+            )
 
     # --------------------------------------------------------------------------- #
     #
     # --------------------------------------------------------------------------- #
     def show_about_message(self):
-        """
-        """
+        """ """
         if os.path.isfile("about.md"):
             with open("about.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_about_program.setMarkdown(file_text)
         else:
-            self.te_about_program.setMarkdown("No about.md file avaliable in root folder")
+            self.te_about_program.setMarkdown(
+                "No about.md file avaliable in root folder"
+            )

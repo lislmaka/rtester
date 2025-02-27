@@ -17,14 +17,14 @@ class window_confirm(QtWidgets.QMessageBox):
     #
     # --------------------------------------------------------------------------- #
     def confirm_data(
-            self,
-            text="Очистить все данные из таблицы?",
-            title_text="Подтвердите действие",
-            ok_text="Да",
-            cancel_text="Нет"):
-        """
-        """
-        if self.bg_color: 
+        self,
+        text="Очистить все данные из таблицы?",
+        title_text="Подтвердите действие",
+        ok_text="Да",
+        cancel_text="Нет",
+    ):
+        """ """
+        if self.bg_color:
             if self.bg_color == "danger":
                 self.setStyleSheet("background-color: rgb(255, 85, 127);")
 

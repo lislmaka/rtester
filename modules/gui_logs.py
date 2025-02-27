@@ -19,14 +19,15 @@ class window_logs(QtWidgets.QDialog):
         self.table_model = table_model
         self.tv_table.setModel(self.table_model)
         self.tv_table.resizeColumnsToContents()
-        self.cb_request_result_type2.currentTextChanged.connect(self.gui_event_cb_request_result_type)
+        self.cb_request_result_type2.currentTextChanged.connect(
+            self.gui_event_cb_request_result_type
+        )
 
     # --------------------------------------------------------------------------- #
     #
     # --------------------------------------------------------------------------- #
     def gui_event_cb_request_result_type(self):
-        """
-        """
+        """ """
         self.table_filter_model = QtCore.QSortFilterProxyModel()
         self.table_filter_model.setSourceModel(self.table_model)
 

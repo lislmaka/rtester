@@ -23,16 +23,18 @@ class single_requsts_theader(QtCore.QThread):
     # --------------------------------------------------------------------------- #
     #
     # --------------------------------------------------------------------------- #
-    def __init__(self,
-                 theader_id,
-                 url,
-                 count_of_requests,
-                 request_method,
-                 request_timeout,
-                 cycle_count,
-                 cpu_max_value,
-                 cpu_current_value,
-                 parent=None):
+    def __init__(
+        self,
+        theader_id,
+        url,
+        count_of_requests,
+        request_method,
+        request_timeout,
+        cycle_count,
+        cpu_max_value,
+        cpu_current_value,
+        parent=None,
+    ):
         super().__init__(parent=parent)
         self.count_of_requests = count_of_requests
         self.url = url
@@ -70,43 +72,39 @@ class single_requsts_theader(QtCore.QThread):
     #
     # --------------------------------------------------------------------------- #
     def stop_theader(self):
-        """
-        """
+        """ """
         self.is_theader_stop = True
 
     # --------------------------------------------------------------------------- #
     #
     # --------------------------------------------------------------------------- #
     def on_finished(self):
-        """
-        """
+        """ """
         self.on_theader_finished.emit(self.theader_id)
 
     # --------------------------------------------------------------------------- #
     #
     # --------------------------------------------------------------------------- #
     def run(self):
-        """
-        """
+        """ """
         self.on_theader_started.emit(self.theader_id)
 
         count_of_iteration = 1
         while count_of_iteration <= self.count_of_requests:
-            #self.cpu_current_value = psutil.cpu_percent(0.1)
-            #self.cpu_current_value = self.cpu_sys_value
+            # self.cpu_current_value = psutil.cpu_percent(0.1)
+            # self.cpu_current_value = self.cpu_sys_value
             if self.is_theader_stop:
                 self.on_iteration.emit(
                     self.theader_id,
                     count_of_iteration,
                     self.cpu_current_value,
-                    "stoped")
+                    "stoped",
+                )
                 break
             if self.cpu_current_value > self.cpu_max_value:
                 self.on_iteration.emit(
-                    self.theader_id,
-                    count_of_iteration,
-                    self.cpu_current_value,
-                    "pause")
+                    self.theader_id, count_of_iteration, self.cpu_current_value, "pause"
+                )
                 # TODO Магия... Надо почитать более подробнее
                 # задачи стартуют так быстро что если не делать задержку то не поток успевает получить флаг отстановки
                 # при большом кол-ве потоков
@@ -122,19 +120,16 @@ class single_requsts_theader(QtCore.QThread):
             try:
                 if self.request_method == "get":
                     response = requests.get(
-                        url=self.url,
-                        headers=headers,
-                        timeout=self.request_timeout)
+                        url=self.url, headers=headers, timeout=self.request_timeout
+                    )
                 if self.request_method == "post":
                     response = requests.post(
-                        url=self.url,
-                        headers=headers,
-                        timeout=self.request_timeout)
+                        url=self.url, headers=headers, timeout=self.request_timeout
+                    )
                 if self.request_method == "head":
                     response = requests.head(
-                        url=self.url,
-                        headers=headers,
-                        timeout=self.request_timeout)
+                        url=self.url, headers=headers, timeout=self.request_timeout
+                    )
 
                 if response.status_code in [200, 301, 302]:
                     if self.request_method == "get":
@@ -142,14 +137,14 @@ class single_requsts_theader(QtCore.QThread):
                     if self.request_method == "head":
                         download_size = len(response.headers)
 
-                    self.on_request.emit(
-                        "request", response.status_code, download_size)
+                    self.on_request.emit("request", response.status_code, download_size)
                 else:
                     self.on_request.emit("request", response.status_code, 0)
 
                 self.param["status_code"] = response.status_code
                 self.param["message"] = "HTTP Status Code {}".format(
-                    response.status_code)
+                    response.status_code
+                )
             except Exception as err:
                 self.on_request.emit("connection", 0, 0)
                 self.param["status_code"] = None
@@ -170,5 +165,6 @@ class single_requsts_theader(QtCore.QThread):
                     self.theader_id,
                     count_of_iteration,
                     self.cpu_current_value,
-                    "running")
+                    "running",
+                )
         # self.on_theader_finished.emit(self.theader_id)
