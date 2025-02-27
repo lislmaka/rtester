@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+autopep8 = "*"
+certifi = "*"
+charset-normalizer = "*"
+idna = "*"
+numpy = "*"
+psutil = "*"
+pycodestyle = "*"
+pyqt5 = "*"
+pyqt5-qt5 = "*"
+pyqt5-sip = "*"
+pyqtgraph = "*"
+requests = "*"
+six = "*"
+toml = "*"
+urllib3 = "*"
+user-agent = "*"
+
+[dev-packages]
+ruff = "*"
+
+[requires]
+python_version = "3.12"
