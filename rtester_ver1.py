@@ -107,7 +107,7 @@ class main_gui(QtWidgets.QMainWindow):
     def import_json_settings(self):
         """
         """
-        with open('settings.txt', encoding='utf-8') as json_file:
+        with open("settings.txt", encoding="utf-8") as json_file:
             settings = json.load(json_file)
         return settings
 
@@ -118,7 +118,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         if os.path.isfile("tests.txt"):
-            with open('tests.txt', encoding='utf-8') as json_file:
+            with open("tests.txt", encoding="utf-8") as json_file:
                 settings = json.load(json_file)
             if settings:
                 return settings
@@ -137,7 +137,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         if os.path.isfile("style.css"):
-            with open('style.css', encoding='utf-8') as file:
+            with open("style.css", encoding="utf-8") as file:
                 css = file.read()
             QtWidgets.qApp.setStyleSheet(css)
 
@@ -382,7 +382,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         parsed_uri = urlparse(url)
-        result = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+        result = "{uri.scheme}://{uri.netloc}/".format(uri=parsed_uri)
         return result
 
     # --------------------------------------------------------------------------- #
@@ -490,13 +490,13 @@ class main_gui(QtWidgets.QMainWindow):
     def gui_event_save_file_log_requests_data(self):
         """
         """
-        path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save File', '', 'CSV(*.csv)')[0]
+        path = QtWidgets.QFileDialog.getSaveFileName(self, "Save File", "", "CSV(*.csv)")[0]
         if path:
             model = self.table_log_requests_model
             headers = [model.headerData(i, QtCore.Qt.Horizontal) for i in range(model.columnCount())]
 
-            with open(path, 'w', encoding='utf-8') as csv_file:
-                writer = csv.writer(csv_file, delimiter=";", quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            with open(path, "w", encoding="utf-8") as csv_file:
+                writer = csv.writer(csv_file, delimiter=";", quotechar="|", quoting=csv.QUOTE_MINIMAL)
                 writer.writerow(headers)
                 for row in range(model.rowCount()):
                     rowdata = []
@@ -732,7 +732,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         Generate User-Agent
         """
-        return generate_user_agent(os=('win', 'mac', 'linux'), device_type=('desktop',))
+        return generate_user_agent(os=("win", "mac", "linux"), device_type=("desktop",))
 
     # --------------------------------------------------------------------------- #
     #
@@ -834,7 +834,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         headers = {
-            'User-Agent': self.gen_new_user_agent(),
+            "User-Agent": self.gen_new_user_agent(),
         }
         try:
             response = requests.head(url=url, headers=headers, timeout=self.sb_request_timeout.value())
@@ -842,7 +842,7 @@ class main_gui(QtWidgets.QMainWindow):
                 return True
             else:
                 return False
-        except Exception as err:
+        except Exception:
             return False
 
     # --------------------------------------------------------------------------- #
@@ -996,7 +996,7 @@ class main_gui(QtWidgets.QMainWindow):
                 self.theaders_objs["theader_"+str(theader_id)]["theader_status"] = "running"
                 pg.setProperty("class", "tpb_running")
                 pg.setValue(iteration)
-            pg.setFormat(' Поток #{}. Выполнено %v из %m ({} (CPU {}% / {}%))'.format(
+            pg.setFormat(" Поток #{}. Выполнено %v из %m ({} (CPU {}% / {}%))".format(
                 theader_id,
                 theader_status,
                 cpu_value,
@@ -1014,7 +1014,7 @@ class main_gui(QtWidgets.QMainWindow):
             )
             pg.setValue(1)
             pg.setObjectName("pg_{}".format(theader_id))
-            pg.setFormat(' Поток #{}. Выполнено %v из %m (running (CPU {}% / {}%))'.format(
+            pg.setFormat(" Поток #{}. Выполнено %v из %m (running (CPU {}% / {}%))".format(
                 theader_id,
                 cpu_value,
                 round(self.cpu_current_value)
@@ -1364,7 +1364,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         try:
             return self.app_tests[cycle_count].get(val, def_val)
-        except Exception as err:
+        except Exception:
             self.add_logs_system("Нет тестовых данных для текущего процесса {}".format(cycle_count + 1))
             self.add_logs_system("Для текущего процесса будут использоваться данные по умолчанию")
             return def_val

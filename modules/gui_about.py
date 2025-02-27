@@ -29,7 +29,7 @@ class menu_about(QtWidgets.QDialog):
         """
         """
         if os.path.isfile("license.md"):
-            with open("license.md", 'r', encoding='utf-8') as infile:
+            with open("license.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_license_program.setMarkdown(file_text)
         else:
@@ -42,7 +42,7 @@ class menu_about(QtWidgets.QDialog):
         """
         """
         if os.path.isfile("about.md"):
-            with open("about.md", 'r', encoding='utf-8') as infile:
+            with open("about.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_about_program.setMarkdown(file_text)
         else:

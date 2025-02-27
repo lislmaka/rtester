@@ -64,7 +64,7 @@ class single_requsts_theader(QtCore.QThread):
         """
         Generate User-Agent
         """
-        return generate_user_agent(os=('win', 'mac', 'linux'), device_type=('desktop',))
+        return generate_user_agent(os=("win", "mac", "linux"), device_type=("desktop",))
 
     # --------------------------------------------------------------------------- #
     #
@@ -117,7 +117,7 @@ class single_requsts_theader(QtCore.QThread):
             count_of_iteration += 1
 
             headers = {
-                'User-Agent': self.gen_new_user_agent(),
+                "User-Agent": self.gen_new_user_agent(),
             }
             try:
                 if self.request_method == "get":

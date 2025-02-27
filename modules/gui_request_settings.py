@@ -29,19 +29,19 @@ class window_request_settings(QtWidgets.QDialog):
         """
         """
         if os.path.isfile(self.app_settings.get("request_headers")):
-            with open(self.app_settings.get("request_headers"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_headers"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_headers.appendPlainText(file_text)
 
         #
         if os.path.isfile(self.app_settings.get("request_params")):
-            with open(self.app_settings.get("request_params"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_params"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_params.appendPlainText(file_text)
 
         #
         if os.path.isfile(self.app_settings.get("request_cookies")):
-            with open(self.app_settings.get("request_cookies"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_cookies"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_cookies.appendPlainText(file_text)
 

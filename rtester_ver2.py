@@ -1,5 +1,4 @@
 import requests
-import random
 import json
 import sys
 import csv
@@ -76,7 +75,7 @@ class single_requsts_theader(QtCore.QRunnable):
         """
         Generate User-Agent
         """
-        return generate_user_agent(os=('win', 'mac', 'linux'), device_type=('desktop',))
+        return generate_user_agent(os=("win", "mac", "linux"), device_type=("desktop",))
 
     # --------------------------------------------------------------------------- #
     #
@@ -127,7 +126,7 @@ class single_requsts_theader(QtCore.QRunnable):
                 count_of_iteration += 1
 
             headers = {
-                'User-Agent': self.gen_new_user_agent(),
+                "User-Agent": self.gen_new_user_agent(),
             }
             try:
                 if self.request_method == "get":
@@ -243,19 +242,19 @@ class window_request_settings(QtWidgets.QDialog):
         """
         """
         if os.path.isfile(self.app_settings.get("request_headers")):
-            with open(self.app_settings.get("request_headers"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_headers"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_headers.appendPlainText(file_text)
 
         #
         if os.path.isfile(self.app_settings.get("request_params")):
-            with open(self.app_settings.get("request_params"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_params"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_params.appendPlainText(file_text)
 
         #
         if os.path.isfile(self.app_settings.get("request_cookies")):
-            with open(self.app_settings.get("request_cookies"), 'r', encoding='utf-8') as infile:
+            with open(self.app_settings.get("request_cookies"), "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.json_request_settings_cookies.appendPlainText(file_text)
 
@@ -409,7 +408,7 @@ class menu_about(QtWidgets.QDialog):
         """
         """
         if os.path.isfile("license.md"):
-            with open("license.md", 'r', encoding='utf-8') as infile:
+            with open("license.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_license_program.setMarkdown(file_text)
         else:
@@ -422,7 +421,7 @@ class menu_about(QtWidgets.QDialog):
         """
         """
         if os.path.isfile("about.md"):
-            with open("about.md", 'r', encoding='utf-8') as infile:
+            with open("about.md", "r", encoding="utf-8") as infile:
                 file_text = infile.read()
             self.te_about_program.setMarkdown(file_text)
         else:
@@ -510,7 +509,7 @@ class main_gui(QtWidgets.QMainWindow):
     def import_json_settings(self):
         """
         """
-        with open('settings.txt', encoding='utf-8') as json_file:
+        with open("settings.txt", encoding="utf-8") as json_file:
             settings = json.load(json_file)
         return settings
 
@@ -521,7 +520,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         if os.path.isfile("tests.txt"):
-            with open('tests.txt', encoding='utf-8') as json_file:
+            with open("tests.txt", encoding="utf-8") as json_file:
                 settings = json.load(json_file)
             if settings:
                 return settings
@@ -540,20 +539,20 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         self.tb_btn_start_process = QtWidgets.QPushButton("Запустить")
-        self.tb_btn_start_process.setIcon(QtGui.QIcon('Images/start.png'))
+        self.tb_btn_start_process.setIcon(QtGui.QIcon("Images/start.png"))
         self.tb_btn_start_process.setIconSize(QtCore.QSize(24, 24))
         #self.tb_btn_start_process.setShortcut('Ctrl+A')
         self.tb_btn_start_process.clicked.connect(self.gui_event_start_program)
 
         self.tb_btn_stop_process = QtWidgets.QPushButton("Остановить")
-        self.tb_btn_stop_process.setIcon(QtGui.QIcon('Images/stop.png'))
+        self.tb_btn_stop_process.setIcon(QtGui.QIcon("Images/stop.png"))
         self.tb_btn_stop_process.setIconSize(QtCore.QSize(24, 24))
         #self.tb_btn_stop_process.setShortcut('Ctrl+S')
         self.tb_btn_stop_process.setDisabled(True)
         self.tb_btn_stop_process.clicked.connect(self.gui_event_stop_theaders)
 
         self.tb_btn_stop_all_process = QtWidgets.QPushButton("Остановить все процессы")
-        self.tb_btn_stop_all_process.setIcon(QtGui.QIcon('Images/stop.png'))
+        self.tb_btn_stop_all_process.setIcon(QtGui.QIcon("Images/stop.png"))
         self.tb_btn_stop_all_process.setIconSize(QtCore.QSize(24, 24))
         #self.tb_btn_stop_all_process.setShortcut('Ctrl+D')
         self.tb_btn_stop_all_process.setDisabled(True)
@@ -561,7 +560,7 @@ class main_gui(QtWidgets.QMainWindow):
         self.tb_btn_stop_all_process.clicked.connect(self.gui_event_stop_all_theaders)
 
         self.tb_btn_close_app = QtWidgets.QPushButton("Закрыть")
-        self.tb_btn_close_app.setIcon(QtGui.QIcon('Images/exit.png'))
+        self.tb_btn_close_app.setIcon(QtGui.QIcon("Images/exit.png"))
         self.tb_btn_close_app.setIconSize(QtCore.QSize(24, 24))
         #self.tb_btn_close_app.setShortcut('Ctrl+X')
         self.tb_btn_close_app.clicked.connect(self.gui_event_close_app)
@@ -793,9 +792,9 @@ class main_gui(QtWidgets.QMainWindow):
         msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
 
         btn_ok = msgBox.button(QtWidgets.QMessageBox.Ok)
-        btn_ok.setText('Закрыть програму')
+        btn_ok.setText("Закрыть програму")
         btn_cancel = msgBox.button(QtWidgets.QMessageBox.Cancel)
-        btn_cancel.setText('Отмена')
+        btn_cancel.setText("Отмена")
 
         msgBox.exec()
 
@@ -817,7 +816,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         parsed_uri = urlparse(url)
-        result = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+        result = "{uri.scheme}://{uri.netloc}/".format(uri=parsed_uri)
         return result
 
     # --------------------------------------------------------------------------- #
@@ -917,9 +916,9 @@ class main_gui(QtWidgets.QMainWindow):
         msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
 
         btn_ok = msgBox.button(QtWidgets.QMessageBox.Ok)
-        btn_ok.setText('Да')
+        btn_ok.setText("Да")
         btn_cancel = msgBox.button(QtWidgets.QMessageBox.Cancel)
-        btn_cancel.setText('Отмена')
+        btn_cancel.setText("Отмена")
 
         msgBox.exec()
 
@@ -939,9 +938,9 @@ class main_gui(QtWidgets.QMainWindow):
         msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
 
         btn_ok = msgBox.button(QtWidgets.QMessageBox.Ok)
-        btn_ok.setText('Да')
+        btn_ok.setText("Да")
         btn_cancel = msgBox.button(QtWidgets.QMessageBox.Cancel)
-        btn_cancel.setText('Отмена')
+        btn_cancel.setText("Отмена")
 
         msgBox.exec()
 
@@ -956,7 +955,7 @@ class main_gui(QtWidgets.QMainWindow):
     def gui_event_save_file_log_requests_data(self):
         """
         """
-        path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save File', '', 'CSV(*.csv)')[0]
+        path = QtWidgets.QFileDialog.getSaveFileName(self, "Save File", "", "CSV(*.csv)")[0]
         if path:
             model = self.table_log_requests_model
             # get headers
@@ -966,8 +965,8 @@ class main_gui(QtWidgets.QMainWindow):
 
             headers = [model.headerData(i, QtCore.Qt.Horizontal) for i in range(model.columnCount())]
 
-            with open(path, 'w', encoding='utf-8') as csv_file:
-                writer = csv.writer(csv_file, delimiter=";", quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            with open(path, "w", encoding="utf-8") as csv_file:
+                writer = csv.writer(csv_file, delimiter=";", quotechar="|", quoting=csv.QUOTE_MINIMAL)
                 writer.writerow(headers)
                 for row in range(model.rowCount()):
                     rowdata = []
@@ -1081,8 +1080,8 @@ class main_gui(QtWidgets.QMainWindow):
         self.graphics_view_main.clear()
 
         self.graphics_view_main.showGrid(x=True, y=True)
-        self.graphics_view_main.setLabel('left', "Потоки / Запросы", units='кол-во')
-        self.graphics_view_main.setLabel('bottom', "Время", units='сек.')
+        self.graphics_view_main.setLabel("left", "Потоки / Запросы", units="кол-во")
+        self.graphics_view_main.setLabel("bottom", "Время", units="сек.")
 
         # Sterted Theaders
         self.graphic_started_theaders_data.append(
@@ -1139,16 +1138,16 @@ class main_gui(QtWidgets.QMainWindow):
             pen=pg.mkPen(width=2))
 
         self.graphics_view_memory.showGrid(x=True, y=True)
-        self.graphics_view_memory.setLabel('left', "Нагрузка", units='%')
-        self.graphics_view_memory.setLabel('bottom', "Время", units='сек.')
+        self.graphics_view_memory.setLabel("left", "Нагрузка", units="%")
+        self.graphics_view_memory.setLabel("bottom", "Время", units="сек.")
 
         #
         midle_line = pg.InfiniteLine(
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Среднее={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Среднее={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = round(sum(self.graphic_memory_data) / len(self.graphic_memory_data))
         midle_line.setPos([0, midle_value])
@@ -1168,8 +1167,8 @@ class main_gui(QtWidgets.QMainWindow):
             pen=pg.mkPen(width=2))
 
         self.graphics_view_cpu.showGrid(x=True, y=True)
-        self.graphics_view_cpu.setLabel('left', "Нагрузка", units='%')
-        self.graphics_view_cpu.setLabel('bottom', "Время", units='сек.')
+        self.graphics_view_cpu.setLabel("left", "Нагрузка", units="%")
+        self.graphics_view_cpu.setLabel("bottom", "Время", units="сек.")
 
         #
         midle_line = pg.InfiniteLine(
@@ -1186,8 +1185,8 @@ class main_gui(QtWidgets.QMainWindow):
             movable=False,
             angle=0,
             pen=pg.mkPen((255, 0, 0), width=1),
-            label='Предел={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (255, 0, 0, 100)})
+            label="Предел={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (255, 0, 0, 100)})
 
         midle_value = self.sb_cpu_max.value()
         midle_line.setPos([0, midle_value])
@@ -1230,15 +1229,15 @@ class main_gui(QtWidgets.QMainWindow):
             pen=pg.mkPen(width=2))
 
         self.graphics_view_speed.showGrid(x=True, y=True)
-        self.graphics_view_speed.setLabel('left', "Скорость", units='Mb/Kb/s')
-        self.graphics_view_speed.setLabel('bottom', "Время", units='сек.')
+        self.graphics_view_speed.setLabel("left", "Скорость", units="Mb/Kb/s")
+        self.graphics_view_speed.setLabel("bottom", "Время", units="сек.")
 
         midle_line = pg.InfiniteLine(
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Среднее={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Среднее={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = round(sum(self.graphic_speed_data) / len(self.graphic_speed_data), 2)
         midle_line.setPos([0, midle_value])
@@ -1272,8 +1271,8 @@ class main_gui(QtWidgets.QMainWindow):
 
         self.graphics_view_requests.clear()
         self.graphics_view_requests.showGrid(x=True, y=True)
-        self.graphics_view_requests.setLabel('left', "Запросы", units='%')
-        self.graphics_view_requests.setLabel('bottom', "Время", units='сек.')
+        self.graphics_view_requests.setLabel("left", "Запросы", units="%")
+        self.graphics_view_requests.setLabel("bottom", "Время", units="сек.")
 
         self.graphics_view_requests.plot(
             y=self.graphic_requests_success_data,
@@ -1296,8 +1295,8 @@ class main_gui(QtWidgets.QMainWindow):
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Успешных={value}%',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Успешных={value}%",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = persent_requests_success
         midle_line.setPos([0, midle_value])
@@ -1308,8 +1307,8 @@ class main_gui(QtWidgets.QMainWindow):
             movable=False,
             angle=0,
             pen=pg.mkPen((255, 0, 0), width=1),
-            label='С ошибками={value}%',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (255, 0, 0, 100)})
+            label="С ошибками={value}%",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (255, 0, 0, 100)})
 
         midle_value = round((all_errors * 100) / int(self.l_kpi_requests.text()), 2)
         midle_line.setPos([0, midle_value])
@@ -1404,7 +1403,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         Generate User-Agent
         """
-        return generate_user_agent(os=('win', 'mac', 'linux'), device_type=('desktop',))
+        return generate_user_agent(os=("win", "mac", "linux"), device_type=("desktop",))
 
     # --------------------------------------------------------------------------- #
     #
@@ -1556,7 +1555,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         """
         headers = {
-            'User-Agent': self.gen_new_user_agent(),
+            "User-Agent": self.gen_new_user_agent(),
         }
         try:
             response = requests.head(url=url, headers=headers, timeout=self.sb_request_timeout.value())
@@ -1564,7 +1563,7 @@ class main_gui(QtWidgets.QMainWindow):
                 return True
             else:
                 return False
-        except Exception as err:
+        except Exception:
             return False
 
     # --------------------------------------------------------------------------- #
@@ -1739,7 +1738,7 @@ class main_gui(QtWidgets.QMainWindow):
                     background-color: rgb(173, 235, 173);
                     """
                 )
-            pg.setFormat(' Поток #{}. Выполнено запросов %v из %m ({} (CPU {}% / {}%))'.format(
+            pg.setFormat(" Поток #{}. Выполнено запросов %v из %m ({} (CPU {}% / {}%))".format(
                 theader_id,
                 theader_status,
                 cpu_value,
@@ -1758,7 +1757,7 @@ class main_gui(QtWidgets.QMainWindow):
             )
             pg.setValue(1)
             pg.setObjectName("pg_{}".format(theader_id))
-            pg.setFormat(' Поток #{}. Выполнено запросов %v из %m (running (CPU {}% / {}%))'.format(
+            pg.setFormat(" Поток #{}. Выполнено запросов %v из %m (running (CPU {}% / {}%))".format(
                 theader_id,
                 cpu_value,
                 round(self.cpu_current_value)
@@ -2113,7 +2112,7 @@ class main_gui(QtWidgets.QMainWindow):
         """
         try:
           return self.app_tests[cycle_count].get(val, def_val)
-        except Exception as err:
+        except Exception:
             self.add_logs_system("Нет тестовых данных для текущего процесса {}".format(cycle_count + 1))
             self.add_logs_system("Для текущего процесса будут использоваться данные по умолчанию")            
             return def_val  

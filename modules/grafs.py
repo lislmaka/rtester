@@ -20,8 +20,8 @@ class grafs():
         self.parent.graphics_view_main.clear()
 
         self.parent.graphics_view_main.showGrid(x=True, y=True)
-        self.parent.graphics_view_main.setLabel('left', "Потоки / Запросы", units='кол-во')
-        self.parent.graphics_view_main.setLabel('bottom', "Время", units='сек.')
+        self.parent.graphics_view_main.setLabel("left", "Потоки / Запросы", units="кол-во")
+        self.parent.graphics_view_main.setLabel("bottom", "Время", units="сек.")
 
         # Sterted Theaders
         self.parent.graphic_started_theaders_data.append(
@@ -73,16 +73,16 @@ class grafs():
             pen=pg.mkPen(width=2))
 
         self.parent.graphics_view_memory.showGrid(x=True, y=True)
-        self.parent.graphics_view_memory.setLabel('left', "Нагрузка", units='%')
-        self.parent.graphics_view_memory.setLabel('bottom', "Время", units='сек.')
+        self.parent.graphics_view_memory.setLabel("left", "Нагрузка", units="%")
+        self.parent.graphics_view_memory.setLabel("bottom", "Время", units="сек.")
 
         #
         midle_line = pg.InfiniteLine(
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Среднее={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Среднее={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = round(sum(self.parent.graphic_memory_data) / len(self.parent.graphic_memory_data))
         midle_line.setPos([0, midle_value])
@@ -102,8 +102,8 @@ class grafs():
             pen=pg.mkPen(width=2))
 
         self.parent.graphics_view_cpu.showGrid(x=True, y=True)
-        self.parent.graphics_view_cpu.setLabel('left', "Нагрузка", units='%')
-        self.parent.graphics_view_cpu.setLabel('bottom', "Время", units='сек.')
+        self.parent.graphics_view_cpu.setLabel("left", "Нагрузка", units="%")
+        self.parent.graphics_view_cpu.setLabel("bottom", "Время", units="сек.")
 
         #
         midle_line = pg.InfiniteLine(
@@ -120,8 +120,8 @@ class grafs():
             movable=False,
             angle=0,
             pen=pg.mkPen((255, 0, 0), width=1),
-            label='Предел={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (255, 0, 0, 100)})
+            label="Предел={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (255, 0, 0, 100)})
 
         midle_value = self.parent.sb_cpu_max.value()
         midle_line.setPos([0, midle_value])
@@ -164,15 +164,15 @@ class grafs():
             pen=pg.mkPen(width=2))
 
         self.parent.graphics_view_speed.showGrid(x=True, y=True)
-        self.parent.graphics_view_speed.setLabel('left', "Скорость", units='Mb/Kb/s')
-        self.parent.graphics_view_speed.setLabel('bottom', "Время", units='сек.')
+        self.parent.graphics_view_speed.setLabel("left", "Скорость", units="Mb/Kb/s")
+        self.parent.graphics_view_speed.setLabel("bottom", "Время", units="сек.")
 
         midle_line = pg.InfiniteLine(
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Среднее={value}',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Среднее={value}",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = round(sum(self.parent.graphic_speed_data) / len(self.parent.graphic_speed_data), 2)
         midle_line.setPos([0, midle_value])
@@ -206,8 +206,8 @@ class grafs():
 
         self.parent.graphics_view_requests.clear()
         self.parent.graphics_view_requests.showGrid(x=True, y=True)
-        self.parent.graphics_view_requests.setLabel('left', "Запросы", units='%')
-        self.parent.graphics_view_requests.setLabel('bottom', "Время", units='сек.')
+        self.parent.graphics_view_requests.setLabel("left", "Запросы", units="%")
+        self.parent.graphics_view_requests.setLabel("bottom", "Время", units="сек.")
 
         self.parent.graphics_view_requests.plot(
             y=self.parent.graphic_requests_success_data,
@@ -230,8 +230,8 @@ class grafs():
             movable=False,
             angle=0,
             pen=pg.mkPen((0, 204, 102), width=1),
-            label='Успешных={value}%',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (0, 204, 102, 100)})
+            label="Успешных={value}%",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (0, 204, 102, 100)})
 
         midle_value = persent_requests_success
         midle_line.setPos([0, midle_value])
@@ -242,8 +242,8 @@ class grafs():
             movable=False,
             angle=0,
             pen=pg.mkPen((255, 0, 0), width=1),
-            label='С ошибками={value}%',
-            labelOpts={'color': (255, 255, 255), 'movable': True, 'fill': (255, 0, 0, 100)})
+            label="С ошибками={value}%",
+            labelOpts={"color": (255, 255, 255), "movable": True, "fill": (255, 0, 0, 100)})
 
         midle_value = round((all_errors * 100) / (self.parent.sb_requests_per_theader.value() * self.parent.sb_theaders.value()), 2)
         midle_line.setPos([0, midle_value])
